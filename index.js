@@ -12,19 +12,19 @@ let id = '';
  * @param {string} description the description of the Task
  */
 const saveTask = (title) =>
-  db.collection("tasks").doc().set({
+  db.collection("materias").doc().set({
     title
   });
 
-const getTasks = () => db.collection("tasks").get();
+const getTasks = () => db.collection("materias").get();
 
-const onGetTasks = (callback) => db.collection("tasks").onSnapshot(callback);
+const onGetTasks = (callback) => db.collection("materias").onSnapshot(callback);
 
-const deleteTask = (id) => db.collection("tasks").doc(id).delete();
+const deleteTask = (id) => db.collection("materias").doc(id).delete();
 
-const getTask = (id) => db.collection("tasks").doc(id).get();
+const getTask = (id) => db.collection("materias").doc(id).get();
 
-const updateTask = (id, updatedTask) => db.collection('tasks').doc(id).update(updatedTask);
+const updateTask = (id, updatedTask) => db.collection('materias').doc(id).update(updatedTask);
 
 window.addEventListener("DOMContentLoaded", async (e) => {
   onGetTasks((querySnapshot) => {
