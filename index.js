@@ -11,10 +11,9 @@ let id = '';
  * @param {string} title the title of the Task
  * @param {string} description the description of the Task
  */
-const saveTask = (title, description) =>
+const saveTask = (title) =>
   db.collection("tasks").doc().set({
-    title,
-    description,
+    title
   });
 
 const getTasks = () => db.collection("tasks").get();
@@ -36,13 +35,13 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
       tasksContainer.innerHTML += `<div class="card card-body mt-2 border-primary">
     <h3 class="h5">${task.title}</h3>
-    <p>${task.description}</p>
+    
     <div>
       <button class="btn btn-primary btn-delete" data-id="${doc.id}">
-        🗑 Delete
+        🗑 Eliminar
       </button>
       <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
-        🖉 Edit
+        🖉 Modificar
       </button>
     </div>
   </div>`;
@@ -67,7 +66,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
           const doc = await getTask(e.target.dataset.id);
           const task = doc.data();
           taskForm["task-title"].value = task.title;
-          taskForm["task-description"].value = task.description;
+          
 
           editStatus = true;
           id = doc.id;
@@ -85,15 +84,14 @@ taskForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const title = taskForm["task-title"];
-  const description = taskForm["task-description"];
+  
 
   try {
     if (!editStatus) {
-      await saveTask(title.value, description.value);
+      await saveTask(title.value);
     } else {
       await updateTask(id, {
-        title: title.value,
-        description: description.value,
+        title: title.value
       })
 
       editStatus = false;

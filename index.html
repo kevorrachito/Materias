@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firebase CRUD</title>
+  <title>Materias</title>
 
   <!-- BOOTSWATCH -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/pulse/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css">
 
   <!-- ANIMATE CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
@@ -15,6 +15,8 @@
 </head>
 
 <body class="bg-light">
+    <h1>Materias:</h1>
+    <h3>Kevin López ETS</h3>
 
   <!-- ADD TASK -->
   <div class="container p-4">
@@ -23,19 +25,20 @@
         <div class="card">
           <div class="card-body">
 
-            <h1 class="h4">Add Task</h1>
+            <h1 class="h4">Agrega una materia</h1>
 
             <form id="task-form">
               <div class="form-group">
-                <input type="text" id="task-title" class="form-control" class="Task Title" placeholder="Task Title"
+                <input type="text" id="task-title" class="form-control" class="Task Title" placeholder="nombre de la materia"
                   autofocus>
               </div>
+<!--               
               <div class="form-group">
                 <textarea id="task-description" rows="3" class="form-control" placeholder="Task Description"></textarea>
-              </div>
+              </div> -->
 
               <button class="btn btn-primary" id="btn-task-form">
-                Save
+                Guardar
               </button>
 
             </form>
