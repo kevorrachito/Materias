@@ -47,16 +47,27 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   </div>`;
     });
 
+    function myFunction() {
+      if (confirm("¿seguro que desea eliminar la materia?")) {
+      
+      } else {
+      console.box("ok");
+      }
+      
+    }
     const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
     btnsDelete.forEach((btn) =>
+    
       btn.addEventListener("click", async (e) => {
         console.log(e.target.dataset.id);
-        try {
-          await deleteTask(e.target.dataset.id);
-        } catch (error) {
-          console.log(error);
-        }
-      })
+        if(confirm("¿seguro que desea eliminar la materia?")){
+          try {
+              await deleteTask(e.target.dataset.id);
+            } catch (error) {
+              console.log(error);
+            }
+      }else{console.log("ok")}
+})
     );
 
     const btnsEdit = tasksContainer.querySelectorAll(".btn-edit");
@@ -65,9 +76,8 @@ window.addEventListener("DOMContentLoaded", async (e) => {
         try {
           const doc = await getTask(e.target.dataset.id);
           const task = doc.data();
-          taskForm["task-title"].value = task.title;
-          
-
+        
+          taskForm["task-title"].value = task.title;  
           editStatus = true;
           id = doc.id;
           taskForm["btn-task-form"].innerText = "Update";
